@@ -35,7 +35,7 @@ def main():
     parser.add_argument('--config', type=str, default='config.yaml',
                         help='Path to configuration file (default: config.yaml)')
     parser.add_argument('--video', type=str, default=None,
-                        help='Path to video file or stream URL (overrides config file)')
+                        help='Video source (0 for webcam, or path to video file)')
     args = parser.parse_args()
     
     # Set up config path
@@ -47,7 +47,11 @@ def main():
     
     # Override video source if provided
     if args.video:
-        config['video']['source'] = args.video
+        # Convert to integer if it's a webcam index
+        if args.video.isdigit():
+            config['video']['source'] = int(args.video)
+        else:
+            config['video']['source'] = args.video
     
     # Initialize components
     # 1. Detector

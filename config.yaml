@@ -1,8 +1,13 @@
 video:
-  source: "C:/Users/kaust/OneDrive/Desktop/Learning/Real Time ObjectDetection/video_analytics_pipeline/Whatsapp Vid 2.mp4" # 0 for webcam, can be a file path or RTSP URL
+  source: "C:/Users/kaust/OneDrive/Desktop/Learning/video_analytics_pipeline/Whatsapp Vid 2.mp4" # 0 for webcam, can be a file path or RTSP URL
   # source: 0 # 0 for webcam, can be a file path or RTSP URL
   width: 540
   height: 900
+
+  # source: 0 # 0 for webcam, can be a file path or RTSP URL
+  # # source: "C:/Users/kaust/OneDrive/Desktop/Learning/video_analytics_pipeline/Whatsapp Vid 2.mp4" # Video file path
+  # width: 640
+  # height: 480
 
 detector:
   model_path: "yolov8n.pt"
