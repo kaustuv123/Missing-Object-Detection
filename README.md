@@ -36,27 +36,93 @@ This project implements a real-time video analytics pipeline that can detect:
 
 ## Usage
 
-Run the pipeline with default settings (webcam input):
+### Running the Pipeline
 
-```
-python main.py
-```
+1. **Using Webcam (Default)**
 
-Run with a video file:
+   ```
+   python main.py
+   ```
 
-```
-python main.py --video path/to/video.mp4
-```
+   This will start the pipeline using your default webcam (usually device index 0).
 
-Run with a custom configuration:
+2. **Using a Video File**
 
-```
-python main.py --config path/to/config.yaml
-```
+   ```
+   python main.py --video path/to/your/video.mp4
+   ```
+
+   Replace `path/to/your/video.mp4` with the actual path to your video file.
+
+3. **Using Custom Configuration**
+   ```
+   python main.py --config path/to/config.yaml
+   ```
+   This allows you to use custom settings defined in your configuration file.
 
 ### Controls
 
 - Press 'q' to quit the application
+- Press 's' to save the current frame
+- Press 'p' to pause/resume the video
+
+## Pipeline Architecture
+
+The video analytics pipeline consists of several interconnected components:
+
+1. **Input Layer**
+
+   - Handles video input from webcam or video file
+   - Performs initial frame preprocessing
+
+2. **Detection Layer**
+
+   - Uses YOLOv8 for real-time object detection
+   - Identifies objects and their bounding boxes
+   - Assigns confidence scores to detections
+
+3. **Tracking Layer**
+
+   - Implements DeepSORT algorithm for object tracking
+   - Maintains object IDs across frames
+   - Handles object re-identification
+
+4. **Scene Memory**
+
+   - Maintains a baseline of objects in the scene
+   - Tracks object presence/absence over time
+   - Implements persistence thresholds
+
+5. **Change Detection**
+
+   - Monitors for missing objects
+   - Detects newly placed objects
+   - Implements temporal smoothing
+
+6. **Visualization Layer**
+   - Draws bounding boxes and labels
+   - Displays status information
+   - Shows real-time notifications
+
+## Screenshots
+
+The `Screenshots` folder contains example outputs of the pipeline in action:
+
+### Object Detection and Tracking
+
+![Object Detection](Screenshots/Screenshot%202025-04-27%20104059.png)
+
+### Missing Object Detection
+
+![Missing Object](Screenshots/Screenshot%202025-04-27%20104111.png)
+
+### New Object Placement
+
+![New Object](Screenshots/Screenshot%202025-04-27%20104118.png)
+
+### Tracking Visualization
+
+![Tracking](Screenshots/Screenshot%202025-04-27%20104148.png)
 
 ## Configuration
 
@@ -86,21 +152,14 @@ video_analytics_pipeline/
 ├── utils/                # Utility functions
 │   ├── visualizer.py
 │   └── timer.py
-└── alerts/               # Notification system
-    └── notify.py
+├── alerts/               # Notification system
+│   └── notify.py
+└── Screenshots/          # Example outputs
 ```
-
-## How It Works
-
-1. The system establishes a baseline of objects in the scene
-2. As new frames arrive, objects are detected and tracked
-3. The scene monitor compares current objects with the baseline
-4. When an object is missing for more than N frames, it's flagged as missing
-5. When a new object appears and remains stable for N frames, it's flagged as new
-6. Notifications appear on screen for missing and new objects
 
 ## Performance
 
 - Optimized for real-time processing on CPU
 - Target performance: >5 FPS at 640x480 resolution
 - Performance will vary based on hardware capabilities
+- CUDA acceleration available if supported hardware is present

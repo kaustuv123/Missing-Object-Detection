@@ -3,12 +3,12 @@ import argparse
 import yaml
 import cv2
 
-from video_analytics_pipeline.detectors.yolov8_detector import YOLOv8Detector
-from video_analytics_pipeline.trackers.deep_sort_tracker import DeepSORTTracker
-from video_analytics_pipeline.engine.scene_monitor import SceneMonitor
-from video_analytics_pipeline.engine.inference import InferenceEngine
-from video_analytics_pipeline.utils.visualizer import Visualizer
-from video_analytics_pipeline.alerts.notify import AlertNotifier
+from detectors.yolov8_detector import YOLOv8Detector
+from trackers.deep_sort_tracker import DeepSORTTracker
+from engine.scene_monitor import SceneMonitor
+from engine.inference import InferenceEngine
+from utils.visualizer import Visualizer
+from alerts.notify import AlertNotifier
 
 
 def load_config(config_path):

@@ -2,8 +2,8 @@ import cv2
 import yaml
 import time
 import numpy as np
-from ..utils.timer import FPSTimer, PerformanceTimer
-from ..alerts.notify import AlertNotifier
+from utils.timer import FPSTimer, PerformanceTimer
+from alerts.notify import AlertNotifier
 
 
 class InferenceEngine:
