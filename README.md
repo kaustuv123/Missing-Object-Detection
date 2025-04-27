@@ -1,5 +1,7 @@
 # Real-Time Video Analytics Pipeline
+## Deployment Considerations
 
+While containerization with Docker was attempted, the build process was found to be time-consuming (taking approximately an hour to complete) due to the large dependencies and complex setup requirements. As a result, the project is currently optimized for direct installation and execution on the host system. This approach provides better performance and faster setup times while maintaining all the functionality of the pipeline.
 This project implements a real-time video analytics pipeline that can detect:
 
 1. **Missing Object Detection** - When an object that was previously in the frame is no longer visible
@@ -164,6 +166,4 @@ video_analytics_pipeline/
 - Performance will vary based on hardware capabilities
 - CUDA acceleration available if supported hardware is present
 
-## Deployment Considerations
 
-While containerization with Docker was attempted, the build process was found to be time-consuming (taking approximately an hour to complete) due to the large dependencies and complex setup requirements. As a result, the project is currently optimized for direct installation and execution on the host system. This approach provides better performance and faster setup times while maintaining all the functionality of the pipeline.
