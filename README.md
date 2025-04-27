@@ -163,3 +163,7 @@ video_analytics_pipeline/
 - Target performance: >5 FPS at 640x480 resolution
 - Performance will vary based on hardware capabilities
 - CUDA acceleration available if supported hardware is present
+
+## Deployment Considerations
+
+While containerization with Docker was attempted, the build process was found to be time-consuming (taking approximately an hour to complete) due to the large dependencies and complex setup requirements. As a result, the project is currently optimized for direct installation and execution on the host system. This approach provides better performance and faster setup times while maintaining all the functionality of the pipeline.
