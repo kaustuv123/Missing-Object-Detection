@@ -1,34 +1,21 @@
 video:
-  source: "C:/Users/kaust/OneDrive/Desktop/Learning/video_analytics_pipeline/Whatsapp Vid 2.mp4" # 0 for webcam, can be a file path or RTSP URL
-  # source: 0 # 0 for webcam, can be a file path or RTSP URL
+  source: "C:/Users/kaust/OneDrive/Desktop/Learning/video_analytics_pipeline/Whatsapp Vid 2.mp4"
   width: 540
   height: 900
-
-  # source: 0 # 0 for webcam, can be a file path or RTSP URL
-  # # source: "C:/Users/kaust/OneDrive/Desktop/Learning/video_analytics_pipeline/Whatsapp Vid 2.mp4" # Video file path
-  # width: 640
-  # height: 480
 
 detector:
   model_path: "yolov8n.pt"
   confidence_threshold: 0.5
-  classes: null # null for all classes, or list of class IDs to detect
+  classes: null
 
 tracker:
-  # max_age: 30
-  max_age:
-    40
-    # maximum frames a track can be lost before deletion
+  max_age: 40
   min_hits: 3
-  # min_hits: 1
-  # minimum hits to initialize a track
-  iou_threshold: 0.3 # IOU threshold for track assignment
+  iou_threshold: 0.3
 
 scene_monitor:
   missing_object_frames: 15
-  # missing_object_frames: 20
-  # frames before an object is considered missing
-  stability_frames: 5 # frames before a new object is considered stable
+  stability_frames: 5
 
 visualization:
   show_fps: true
@@ -37,6 +24,6 @@ visualization:
   box_thickness: 2
   text_size: 0.5
   text_thickness: 2
-  missing_color: [0, 0, 255] # BGR red for missing objects
-  new_color: [0, 255, 0] # BGR green for new objects
-  normal_color: [255, 0, 0] # BGR blue for normal objects
+  missing_color: [0, 0, 255]
+  new_color: [0, 255, 0]
+  normal_color: [255, 0, 0]
